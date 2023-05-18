@@ -18,10 +18,11 @@ function Register() {
         const photo = form.photo.value;
         setError('')
         register(email, password)
-            .then(() => {
-                updateUser(name, photo)
+            .then((userCredential) => {
                 const user = userCredential.user;
+                updateUser(user,name, photo)
                 console.log(user);
+                form.reset()
             })
             .catch((error) => {
                 const errorCode = error.code;

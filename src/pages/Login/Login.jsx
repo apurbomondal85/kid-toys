@@ -1,27 +1,24 @@
 
 import { Button } from 'flowbite-react'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { FcGoogle } from "react-icons/fc";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 
 function Login() {
-    const { register, updateUser } = useContext(AuthContext)
+    const { login } = useContext(AuthContext)
     const [error, setError] = useState();
 
-    const handleRegister = e => {
+    const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
-        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        const photo = form.photo.value;
         setError('')
-        register(email, password)
-            .then(() => {
-                updateUser(name, photo)
+        login(email, password)
+            .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user);
+                form.reset();
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -31,7 +28,7 @@ function Login() {
 
     return (
         <div className='h-full py-16 flex items-center justify-center'>
-            <form className='lg:w-[500px] p-8 shadow-md shadow-purple-300 rounded-lg border-t border-purple-300'>
+            <form onSubmit={handleLogin} className='lg:w-[500px] p-8 shadow-md shadow-purple-300 rounded-lg border-t border-purple-300'>
                 <h1 className='text-center text-4xl font-bold text-slate-700'>Login Now</h1>
                 <div className="w-16 h-1 bg-purple-700 mx-auto mb-8 mt-2"></div>
                 <div className="mb-6">
@@ -48,6 +45,9 @@ function Login() {
                     </div>
                     <label htmlFor="remember" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
                 </div>
+                {
+                    error && <p className='mb-3 text-red-600'>Something wrong {error}</p>
+                }
                 <Button type='submit' gradientMonochrome="purple">Register</Button>
                 <p className="mt-3">Create an account? <Link to='/register' className='underline text-purple-500'>Register now</Link></p>
                 <div className="my-4 flex items-center gap-3">

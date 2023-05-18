@@ -9,7 +9,7 @@ function NavBar() {
     const {user, logOut} = useContext(AuthContext)
 
     const handleLogOut = () => {
-        logOut().then().catch();
+        logOut()
     }
 
     return (
@@ -50,7 +50,7 @@ function NavBar() {
                 </Link>
                 {
                     user ? <>
-                        <Link to="/my-toys">Ny Toys</Link>
+                        <Link to="/my-toys">My Toys</Link>
                         <Link to="/add-toy">Add Toy</Link>
                     </> : ''
                 }
