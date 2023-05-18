@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 
 function Login() {
-    const { login } = useContext(AuthContext)
+    const { login, google } = useContext(AuthContext)
     const [error, setError] = useState();
 
     const handleLogin = e => {
@@ -25,6 +25,16 @@ function Login() {
                 setError(errorCode)
             });
     }
+
+    const loginGoogle = () => {
+        google().then(result => {
+            const user = result.user;
+            setError('')
+        }).catch(err => {
+            setError(err.code)
+        })
+    }
+
 
     return (
         <div className='h-full py-16 flex items-center justify-center'>
@@ -55,7 +65,7 @@ function Login() {
                     <p className='text-2xl text-slate-700'>Or</p>
                     <div className="w-full h-[1px] bg-purple-700"></div>
                 </div>
-                <div className="flex justify-center"><Button color='white' className='border border-purple-300 rounded-2xl font-bold'><FcGoogle className='text-2xl text-left'></FcGoogle> <span className='font-bold mx-8'>Login with google</span></Button></div>
+                <div className="flex justify-center"><Button onClick={loginGoogle} color='white' className='border border-purple-300 rounded-2xl font-bold'><FcGoogle className='text-2xl text-left'></FcGoogle> <span className='font-bold mx-8'>Login with google</span></Button></div>
             </form>
         </div>
     )

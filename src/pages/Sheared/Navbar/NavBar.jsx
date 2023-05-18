@@ -7,7 +7,7 @@ import { AuthContext } from '../../../Provider/AuthProvider'
 
 function NavBar() {
     const {user, logOut} = useContext(AuthContext)
-
+    
     const handleLogOut = () => {
         logOut()
     }
@@ -29,7 +29,7 @@ function NavBar() {
                 {
                     user ? <>
                         <Avatar
-                            img={user.photoURL}
+                            img={user?.photoURL}
                             rounded={true}
                             bordered={true}
                             color="purple"
