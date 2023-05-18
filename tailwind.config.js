@@ -1,3 +1,4 @@
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -6,7 +7,13 @@ export default {
     'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'banner1': "url(../src/assets/images/banner1.jpg)",
+        'banner2': "url(../src/assets/images/banner2.jpg)",
+        'banner3': "url(../src/assets/images/banner3.jpg)",
+      }
+    },
   },
   plugins: [
     require('flowbite/plugin')

@@ -30,7 +30,7 @@ function NavBar() {
                         />
                         <Button color="dark" className='py-1 px-6 font-bold'>LogOut</Button>
                     </>
-                        : <Button  gradientMonochrome="purple" className='py-1 px-6 font-bold'>Login</Button>
+                        : <Link to="/login"><Button gradientMonochrome="purple" className='py-1 px-6 font-bold'>Login</Button></Link>
                 }
                 <Navbar.Toggle />
             </div>
