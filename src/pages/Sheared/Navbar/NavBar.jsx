@@ -2,9 +2,16 @@
 import { Avatar, Button, Navbar } from 'flowbite-react'
 import logo from '../../../assets/images/logo.png'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../../Provider/AuthProvider'
 
 function NavBar() {
-    const user = true
+    const {user, logOut} = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut().then().catch();
+    }
+
     return (
         <Navbar
             fluid={true}
@@ -22,13 +29,13 @@ function NavBar() {
                 {
                     user ? <>
                         <Avatar
-                            img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                            img={user.photoURL}
                             rounded={true}
                             bordered={true}
                             color="purple"
                             title={user.displayName ? user.displayName : 'User name'}
                         />
-                        <Button color="dark" className='py-1 px-6 font-bold'>LogOut</Button>
+                        <Button color="dark" onClick={handleLogOut} className='py-1 px-6 font-bold'>LogOut</Button>
                     </>
                         : <Link to="/login"><Button gradientMonochrome="purple" className='py-1 px-6 font-bold'>Login</Button></Link>
                 }
