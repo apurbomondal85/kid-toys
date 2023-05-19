@@ -33,7 +33,7 @@ function NavBar() {
                             rounded={true}
                             bordered={true}
                             color="purple"
-                            title={user.displayName ? user.displayName : 'User name'}
+                            title={user?.displayName ? user?.displayName : 'User name'}
                         />
                         <Button color="dark" onClick={handleLogOut} className='py-1 px-6 font-bold'>LogOut</Button>
                     </>

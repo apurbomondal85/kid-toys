@@ -7,6 +7,7 @@ import AllToys from "../pages/AllToys/AllToys";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import AddToys from "../pages/AddToys/AddToys";
 import ToyDetails from "../pages/ToyDetails/ToyDetails";
+import MyToys from "../pages/MyToys/MyToys";
 
 export const router = createBrowserRouter([
     {
@@ -19,8 +20,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/my-toys',
-                element: <AllToys></AllToys>,
-                loader: () => fetch(`http://localhost:5000/limitToys?limit=20`)
+                element: <MyToys></MyToys>
             },
             {
                 path: '/all-toys',

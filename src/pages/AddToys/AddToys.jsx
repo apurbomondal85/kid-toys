@@ -80,10 +80,8 @@ function AddToys() {
                         <label htmlFor="rating" className="label">Rating</label>
                     </div>
                     <div className="relative z-0 w-full mb-6 group">
-                        <div className="relative z-0 w-full mb-6 group">
-                            <input type="text" name="quantity" id="quantity" autoComplete='none' className="input peer" required />
-                            <label htmlFor="quantity" className="label">Quantity</label>
-                        </div>
+                        <input type="text" name="quantity" id="quantity" autoComplete='none' className="input peer" required />
+                        <label htmlFor="quantity" className="label">Quantity</label>
                     </div>
                 </div>
                 <div>
