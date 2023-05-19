@@ -18,8 +18,14 @@ export const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
+                path: '/my-toys',
+                element: <AllToys></AllToys>,
+                loader: () => fetch(`http://localhost:5000/limitToys?limit=20`)
+            },
+            {
                 path: '/all-toys',
-                element: <PrivateRoutes><AllToys></AllToys></PrivateRoutes>
+                element: <AllToys></AllToys>,
+                loader: () => fetch(`http://localhost:5000/limitToys?limit=20`)
             },
             {
                 path: '/add-toy',

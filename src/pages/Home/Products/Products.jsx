@@ -5,7 +5,6 @@ import './Products.css'
 import { useEffect, useState } from 'react';
 import Product from './Product';
 import { Button } from 'flowbite-react';
-import { ToastContainer } from 'react-toastify';
 
 function Products() {
     const [products, setProducts] = useState([])
@@ -16,7 +15,7 @@ function Products() {
         const selectedTabValue = tabsData[index].value;
         setSelectedTab(index);
 
-        fetch(`http://localhost:5000/toys/${selectedTabValue}`)
+        fetch(`http://localhost:5000/toys/category/${selectedTabValue}`)
             .then(res => res.json())
             .then(data => {
                 setProducts(data);
@@ -63,7 +62,6 @@ function Products() {
                             {
                                 products.slice(0,open ? products.length : 6).map(product => <Product key={product._id} product={product}></Product>)
                             }
-                            <ToastContainer></ToastContainer>
                         </div>
                     </TabPanel>
                 ))}

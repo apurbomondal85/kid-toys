@@ -6,7 +6,7 @@ import { useLoaderData } from 'react-router-dom'
 
 function ToyDetails() {
     const loaderToy = useLoaderData();
-    const { _id, name, picture, price, seller, rating, category, description } = loaderToy;
+    const { _id, name, email, picture, price, seller, rating, category,quantity, description } = loaderToy;
     return (
         <div className='py-16'>
             <h2 className='text-center font-bold text-xl text-purple-700'>Single Toy Details</h2>
@@ -20,7 +20,9 @@ function ToyDetails() {
                     <h1 className="text-3xl font-bold text-slate-700 whitespace-nowrap">{name}</h1>
                     <p className="text-gray-500 font-semibold w-full lg:w-[80%]">{description}</p>
                     <p className="text-gray-500 font-semibold w-full lg:w-[80%]"><strong>Seller</strong> : {seller}</p>
+                    <p className="text-gray-500 font-semibold w-full lg:w-[80%]"><strong>Email</strong> : {email}</p>
                     <p className="text-gray-500 font-semibold w-full lg:w-[80%]"><strong>Price</strong> : ${price}</p>
+                    <p className="text-gray-500 font-semibold w-full lg:w-[80%]"><strong>Quantity</strong> : {quantity}</p>
                     <p className="text-gray-500 font-semibold w-full lg:w-[80%]"><strong>Category</strong> : {category}</p>
                     <div className="flex items-center gap-2 mb-4">
                         <Rating

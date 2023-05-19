@@ -2,12 +2,15 @@
 import { Button } from 'flowbite-react'
 import React, { useContext, useState } from 'react'
 import { FcGoogle } from 'react-icons/fc'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../Provider/AuthProvider'
 
 function Register() {
     const { register, updateUser, google } = useContext(AuthContext)
     const [error, setError] = useState();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location?.state?.from?.pathname || '/';
 
     const handleRegister = e => {
         e.preventDefault();
@@ -21,8 +24,8 @@ function Register() {
             .then((userCredential) => {
                 const user = userCredential.user;
                 updateUser(user, name, photo)
-                console.log(user);
                 form.reset()
+                navigate(from)
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -34,6 +37,7 @@ function Register() {
         google().then(result => {
             const user = result.user;
             setError('')
+            navigate(from)
         }).catch(err => {
             setError(err.code)
         })
