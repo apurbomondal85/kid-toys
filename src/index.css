@@ -8,7 +8,7 @@
 }
 
 .tab {
-    @apply py-3 px-4 bg-white rounded-md font-bold border border-purple-700
+    @apply py-3 px-4 bg-white rounded-md font-bold border border-purple-700 cursor-pointer
 }
 
 .input {

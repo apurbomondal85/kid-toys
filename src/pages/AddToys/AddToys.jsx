@@ -90,7 +90,6 @@ function AddToys() {
                     <textarea id="message" rows="4" name='description' className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Write Description..."></textarea>
                 </div>
                 <Button type='submit' gradientMonochrome='purple' className='py-1 px-6 mt-6 shadow-lg'><span className='text-xl'>Add Toy</span></Button>
-                <ToastContainer />
             </form>
         </div>
     )
