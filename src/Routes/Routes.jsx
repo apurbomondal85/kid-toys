@@ -26,8 +26,9 @@ export const router = createBrowserRouter([
                 element: <PrivateRoutes><AddToys></AddToys></PrivateRoutes>
             },
             {
-                path: '/toy-details',
-                element: <PrivateRoutes><ToyDetails></ToyDetails></PrivateRoutes>
+                path: '/toy-details/:id',
+                element: <PrivateRoutes><ToyDetails></ToyDetails></PrivateRoutes>,
+                loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
             },
             {
                 path: '/login',

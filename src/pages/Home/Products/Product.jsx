@@ -13,7 +13,7 @@ function Product({ product }) {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const handleDetailsBtn = () => {
+    const handleDetailsBtn = (id) => {
         if (!user) {
             toast('You have to log in first to view details', {
                 position: "top-center",
@@ -25,12 +25,12 @@ function Product({ product }) {
                 progress: undefined,
                 theme: "light",
             });
-            setTimeout(() => navigate('/toy-details'), 2100);
+            setTimeout(() => navigate(`/toy-details/${id}`), 2100);
         }
-        navigate('/toy-details')
+        navigate(`/toy-details/${id}`)
     }
 
-    const { name, picture, seller, email, price, category, rating, quantity, description } = product;
+    const { _id, name, picture, price, rating } = product;
     return (
         <div className=" bg-white border border-gray-200 rounded-lg shadow transition-all ease-in-out duration-500 hover:shadow-lg cursor-pointer">
             <img className="h-[250px] object-fill w-full rounded-t-lg" src={picture} alt="product image" />
@@ -47,7 +47,7 @@ function Product({ product }) {
                     />
                     <span>({rating})</span>
                 </div>
-                <Button onClick={handleDetailsBtn} gradientMonochrome="purple">View details</Button>
+                <Button onClick={() => handleDetailsBtn(_id)} gradientMonochrome="purple">View details</Button>
             </div>
         </div>
     )
