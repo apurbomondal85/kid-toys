@@ -16,7 +16,7 @@ function NavBar() {
         <Navbar
             fluid={true}
             rounded={true}
-            className='py-4 sticky top-0 left-0 border-b z-50 rounded-none'
+            className='py-4 sticky top-0 left-0 border-b z-40 rounded-none'
         >
             <Navbar.Brand to="/">
                 <img
