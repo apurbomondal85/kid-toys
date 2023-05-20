@@ -15,11 +15,13 @@ function Products() {
         const selectedTabValue = tabsData[index].value;
         setSelectedTab(index);
 
-        fetch(`https://toys-server-omega.vercel.app/toys/category/${selectedTabValue}`)
-            .then(res => res.json())
-            .then(data => {
-                setProducts(data);
-            })
+        if (selectedTabValue !== "All") {
+            fetch(`https://toys-server-omega.vercel.app/toys/category/${selectedTabValue}`)
+                .then(res => res.json())
+                .then(data => {
+                    setProducts(data);
+                })
+        }
     }
 
     useEffect(() => {
@@ -45,11 +47,11 @@ function Products() {
 
     return (
         <div className='py-16'>
-            <h2 className="text-center text-purple-700 font-bold text-xl">Products</h2>
-            <div className="w-20 h-1 mx-auto bg-slate-700 mt-2 mb-4"></div>
-            <h1 className='text-center text-4xl font-bold text-slate-700 mb-12'>Our Products</h1>
+            <h2 className="text-center text-purple-700 font-bold text-base lg:text-xl">Products</h2>
+            <div className="w-12 lg:w-20 h-1 mx-auto bg-slate-700 mt-2 mb-4"></div>
+            <h1 className='text-center text-2xl lg:text-4xl font-bold text-slate-700 mb-12'>Our Products</h1>
             <Tabs onSelect={handleTabSelect} selectedIndex={selectedTab}>
-                <TabList className="flex items-center justify-center gap-6 mb-8">
+                <TabList className="flex items-center justify-center gap-2 lg:gap-6 mb-8">
                     {tabsData.map((tab, index) => (
                         <Tab className='tab' key={index} data={tab.value}>
                             {tab.label}
@@ -60,7 +62,7 @@ function Products() {
                     <TabPanel key={index}>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {
-                                products.slice(0,open ? products.length : 6).map(product => <Product key={product._id} product={product}></Product>)
+                                products.slice(0, open ? products.length : 6).map(product => <Product key={product._id} product={product}></Product>)
                             }
                         </div>
                     </TabPanel>

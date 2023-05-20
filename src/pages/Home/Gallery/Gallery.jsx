@@ -4,9 +4,9 @@ import React from 'react'
 function Gallery() {
     return (
         <div className='py-16'>
-            <h2 className='text-xl font-bold mb-2 text-center text-purple-700'>Gallery</h2>
-            <div className="w-16 h-1 mx-auto bg-slate-700"></div>
-            <h1 className='text-4xl font-bold text-slate-800 text-center mt-4'>Explore Our Collection</h1>
+            <h2 className='text-base lg:text-xl font-bold mb-2 text-center text-purple-700'>Gallery</h2>
+            <div className=" w-12 lg:w-20 h-1 mx-auto bg-slate-700"></div>
+            <h1 className='text-2xl lg:text-4xl font-bold text-slate-800 text-center mt-4'>Explore Our Collection</h1>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-12">
                 <div className="grid gap-4">

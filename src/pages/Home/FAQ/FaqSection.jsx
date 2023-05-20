@@ -6,9 +6,9 @@ import React from 'react'
 function FAQSection() {
     return (
         <div className="py-16 ">
-            <h1 className='text-center text-4xl font-bold text-slate-700'>Frequently Asked Questions</h1>
+            <h1 className='text-center text-2xl lg:text-4xl font-bold text-slate-700'>Frequently Asked Questions</h1>
             <div className="w-28 h-1 mx-auto bg-purple-700 mt-3 mb-12"></div>
-            <div className='flex gap-6'>
+            <div className='flex flex-col lg:flex-row gap-6'>
                 <div className="basis-[50%]">
                     <Accordion>
                         <Accordion.Panel>

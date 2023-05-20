@@ -1,16 +1,18 @@
 
 import { Avatar, Button, Navbar } from 'flowbite-react'
 import logo from '../../../assets/images/logo.png'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../../Provider/AuthProvider'
 
 function NavBar() {
-    const {user, logOut} = useContext(AuthContext)
-    
+    const { user, logOut } = useContext(AuthContext)
+
     const handleLogOut = () => {
         logOut()
     }
+
+    const activeLink = ({ isActive }) => isActive ? "text-purple-700" : "";
 
     return (
         <Navbar
@@ -25,38 +27,53 @@ function NavBar() {
                     alt="toys Logo"
                 />
             </Navbar.Brand>
-            <div className="flex md:order-2 gap-4">
+            <div className="flex items-center md:order-2 gap-4">
                 {
                     user ? <>
                         <Avatar
+                            className='hidden lg:block'
                             img={user.photoURL}
                             rounded={true}
                             bordered={true}
                             color="purple"
                             title={user?.displayName ? user?.displayName : 'User name'}
                         />
-                        <Button color="dark" onClick={handleLogOut} className='py-1 px-6 font-bold'>LogOut</Button>
+                        <Button color="dark" onClick={handleLogOut} className='py-1 px-6 font-bold hidden lg:block'>LogOut</Button>
                     </>
-                        : <Link to="/login"><Button gradientMonochrome="purple" className='py-1 px-6 font-bold'>Login</Button></Link>
+                        : <NavLink to="/login"><Button gradientMonochrome="purple" className='py-1 px-6 font-bold hidden lg:block'>Login</Button></NavLink>
                 }
                 <Navbar.Toggle />
             </div>
-            <Navbar.Collapse className=''>
-                <Link to="/">
-                    Home
-                </Link>
-                <Link to="/all-toys">
-                    All Toys
-                </Link>
+            <Navbar.Collapse className='flex flex-col lg:flex-row items-center text-center'>
                 {
                     user ? <>
-                        <Link to="/my-toys">My Toys</Link>
-                        <Link to="/add-toy">Add Toy</Link>
+                        <Avatar
+                            className='block lg:hidden'
+                            img={user.photoURL}
+                            rounded={true}
+                            bordered={true}
+                            color="purple"
+                            title={user?.displayName ? user?.displayName : 'User name'}
+                        />
+                        <Button color="dark" onClick={handleLogOut} className='py-1 px-6 font-bold block lg:hidden mt-2'>LogOut</Button>
+                    </>
+                        : <NavLink to="/login"><Button gradientMonochrome="purple" className='py-1 px-6 font-bold block lg:hidden'>Login</Button></NavLink>
+                }
+                <NavLink to="/" className={activeLink}>
+                    Home
+                </NavLink>
+                <NavLink to="/all-toys" className={activeLink}>
+                    All Toys
+                </NavLink>
+                {
+                    user ? <>
+                        <NavLink to="/my-toys" className={activeLink}>My Toys</NavLink>
+                        <NavLink to="/add-toy" className={activeLink}>Add Toy</NavLink>
                     </> : ''
                 }
-                <Link to="/blog">
+                <NavLink to="/blog" className={activeLink}>
                     Blog
-                </Link>
+                </NavLink>
             </Navbar.Collapse>
         </Navbar>
     )
