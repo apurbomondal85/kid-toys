@@ -1,11 +1,10 @@
 
 import { Accordion } from 'flowbite-react'
-import { AccordionPanel } from 'flowbite-react/lib/esm/components/Accordion/AccordionPanel'
 import React from 'react'
 
 function FAQSection() {
     return (
-        <div className="py-16 ">
+        <div data-aos-offset="200" data-aos-delay="50" data-aos="fade-up" className="py-16 ">
             <h1 className='text-center text-2xl lg:text-4xl font-bold text-slate-700'>Frequently Asked Questions</h1>
             <div className="w-28 h-1 mx-auto bg-purple-700 mt-3 mb-12"></div>
             <div className='flex flex-col lg:flex-row gap-6'>

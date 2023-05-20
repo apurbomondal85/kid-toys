@@ -3,7 +3,7 @@ import React from 'react'
 
 function Gallery() {
     return (
-        <div className='py-16'>
+        <div className='py-16' data-aos-delay="100" data-aos-easing="ease-in-out" data-aos="zoom-in-up">
             <h2 className='text-base lg:text-xl font-bold mb-2 text-center text-purple-700'>Gallery</h2>
             <div className=" w-12 lg:w-20 h-1 mx-auto bg-slate-700"></div>
             <h1 className='text-2xl lg:text-4xl font-bold text-slate-800 text-center mt-4'>Explore Our Collection</h1>

@@ -2,7 +2,7 @@
 
 function Offers() {
     return (
-        <div className="h-[200px] lg:h-[400px] relative my-16 bg-slate-700 bg-banner3 bg-cover bg-center ">
+        <div className="h-[200px] lg:h-[400px] relative my-16 bg-slate-700 bg-banner3 bg-cover bg-center">
             <div className="w-full h-full bg-[rgba(162,86,255,0.58)]"></div>
             <div className=" h-full absolute top-[20%] lg:top-[30%] left-0">
                 <div className="w-[80%] mx-auto">

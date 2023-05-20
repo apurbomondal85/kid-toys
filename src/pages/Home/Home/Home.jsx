@@ -6,6 +6,9 @@ import Products from '../Products/Products'
 import Offers from '../Offers/Offers'
 import FAQSection from '../FAQ/FAQSection'
 import Reviews from '../Reviews/Reviews'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 function Home() {
   return (

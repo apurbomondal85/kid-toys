@@ -16,7 +16,7 @@ function Products() {
         setSelectedTab(index);
 
         if (selectedTabValue !== "All") {
-            fetch(`https://toys-server-omega.vercel.app/toys/category/${selectedTabValue}`)
+            fetch(`http://localhost:5000/toys/category/${selectedTabValue}`)
                 .then(res => res.json())
                 .then(data => {
                     setProducts(data);
@@ -26,7 +26,7 @@ function Products() {
 
     useEffect(() => {
         if (selectedTab == 0) {
-            fetch('https://toys-server-omega.vercel.app/toys', {
+            fetch('http://localhost:5000/toys', {
                 headers: {
                     'content-type': 'application/json'
                 }
@@ -46,7 +46,7 @@ function Products() {
     ];
 
     return (
-        <div className='py-16'>
+        <div className='py-16' data-aos="fade-right" data-aos-offset="300" data-aos-duration="400" data-aos-easing="ease-in-sine">
             <h2 className="text-center text-purple-700 font-bold text-base lg:text-xl">Products</h2>
             <div className="w-12 lg:w-20 h-1 mx-auto bg-slate-700 mt-2 mb-4"></div>
             <h1 className='text-center text-2xl lg:text-4xl font-bold text-slate-700 mb-12'>Our Products</h1>

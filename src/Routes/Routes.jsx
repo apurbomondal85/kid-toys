@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
             {
                 path: '/all-toys',
                 element: <AllToys></AllToys>,
-                loader: () => fetch(`https://toys-server-omega.vercel.app/limitToys?limit=20`)
+                loader: () => fetch(`http://localhost:5000/limitToys?limit=20`)
             },
             {
                 path: '/add-toy',
@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
             {
                 path: '/toy-details/:id',
                 element: <PrivateRoutes><ToyDetails></ToyDetails></PrivateRoutes>,
-                loader: ({params}) => fetch(`https://toys-server-omega.vercel.app/toys/${params.id}`)
+                loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
             },
             {
                 path: '/blog',
