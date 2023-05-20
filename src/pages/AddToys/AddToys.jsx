@@ -26,7 +26,7 @@ function AddToys() {
 
         const toyInfo = { name, picture, seller, email, price, category, rating, quantity, description };
 
-        fetch('http://localhost:5000/toys', {
+        fetch('https://toys-server-omega.vercel.app/toys', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

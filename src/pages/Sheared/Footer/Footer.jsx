@@ -7,8 +7,8 @@ import { Button } from 'flowbite-react'
 function Footer() {
     return (
         <div>
-            <footer className="bg-gray-100 border px-8 pt-12 pb-6 mt-12 overflow-hidden">
-                <div className="mx-auto w-full max-w-screen-xl">
+            <footer className="bg-gray-100 border px-2 lg:px-8 pt-12 pb-6 mt-12">
+                <div className="w-full">
                     <div className="flex flex-col lg:flex-row gap-8">
                         <div className="basis-[40%]">
                             <img src={logo} className="h-10" alt="Logo" />
