@@ -8,6 +8,7 @@ import useTitle from '../DynamicTitle/DynamicTitle';
 function ToyDetails() {
     const loaderToy = useLoaderData();
     const { _id, name, email, picture, price, seller, rating, category,quantity, description } = loaderToy;
+    // dynamic title
     useTitle(`Toy Details - ${name}`)
 
 

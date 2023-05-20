@@ -12,8 +12,10 @@ function Login() {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location?.state?.from?.pathname || '/';
+    // dynamic title
     useTitle("Login")
 
+    // handle login
     const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
@@ -32,6 +34,7 @@ function Login() {
             });
     }
 
+    // login with google
     const loginGoogle = () => {
         google().then(result => {
             const user = result.user;

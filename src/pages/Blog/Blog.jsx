@@ -4,6 +4,7 @@ import React from 'react'
 import useTitle from '../DynamicTitle/DynamicTitle'
 
 function Blog() {
+    // dynamic title
     useTitle("Blog")
 
     return (

@@ -12,8 +12,10 @@ function Register() {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location?.state?.from?.pathname || '/';
+    // dynamic title
     useTitle("Sing Up")
 
+    // handle sing up
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
@@ -35,6 +37,7 @@ function Register() {
             });
     }
 
+    // login with google
     const loginGoogle = () => {
         google().then(result => {
             const user = result.user;

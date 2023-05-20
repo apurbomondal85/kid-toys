@@ -13,8 +13,10 @@ function AllToys() {
   const search = useRef('')
   const [products, setProducts] = useState(loadProducts)
   const navigate = useNavigate();
+  // dynamic title
   useTitle("All Toys")
 
+  // handle the search value and get toys
   const handleSearchBtn = () => {
     const searchValue = search.current.value;
     if (searchValue) {
@@ -26,6 +28,7 @@ function AllToys() {
     }
   }
 
+  // handle view details btn
   const handleDetailsBtn = (id) => {
     if (!user) {
       toast('You have to log in first to view details', {

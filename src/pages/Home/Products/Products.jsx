@@ -11,6 +11,7 @@ function Products() {
     const [selectedTab, setSelectedTab] = useState(0);
     const [open, setOpen] = useState(false);
 
+    // handle tab select value and get toys
     const handleTabSelect = (index) => {
         const selectedTabValue = tabsData[index].value;
         setSelectedTab(index);
@@ -24,13 +25,10 @@ function Products() {
         }
     }
 
+    // get all toys
     useEffect(() => {
         if (selectedTab == 0) {
-            fetch('http://localhost:5000/toys', {
-                headers: {
-                    'content-type': 'application/json'
-                }
-            })
+            fetch('http://localhost:5000/toys')
                 .then(res => res.json())
                 .then(data => {
                     setProducts(data)

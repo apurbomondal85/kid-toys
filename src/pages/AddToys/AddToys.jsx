@@ -7,7 +7,10 @@ import useTitle from '../DynamicTitle/DynamicTitle'
 
 function AddToys() {
     const { user } = useContext(AuthContext)
+    // dynamic title
     useTitle("Add Toy");
+
+    // added toys
     const handleAddToy = e => {
         e.preventDefault();
         const form = e.target;

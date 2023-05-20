@@ -15,6 +15,7 @@ function MyToys() {
     const [sort, setSort] = useState('ascending');
     useTitle("My Toys")
 
+    // get toy using email
     useEffect(() => {
         if (user?.email) {
             fetch(`http://localhost:5000/username?email=${user.email}`)
@@ -30,6 +31,7 @@ function MyToys() {
         setId(_id)
     }
 
+    // update toy property
     const handleUpdate = e => {
         e.preventDefault();
         const form = e.target;
@@ -58,6 +60,7 @@ function MyToys() {
             })
     }
 
+    // delete toys
     const deleteBtn = (_id) => {
         Swal.fire({
             title: 'Are you sure?',

@@ -12,7 +12,9 @@ import { useNavigate } from 'react-router-dom';
 function Product({ product }) {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-
+    const { _id, name, picture, price, rating } = product;
+    
+    // handle view detail btn using id
     const handleDetailsBtn = (id) => {
         if (!user) {
             toast('You have to log in first to view details', {
@@ -31,7 +33,7 @@ function Product({ product }) {
         navigate(`/toy-details/${id}`)
     }
 
-    const { _id, name, picture, price, rating } = product;
+
     return (
         <div className=" bg-white border border-gray-200 rounded-lg shadow transition-all ease-in-out duration-500 hover:shadow-lg cursor-pointer">
             <img className="h-[250px] object-fill w-full rounded-t-lg" src={picture} alt="product-image" />
