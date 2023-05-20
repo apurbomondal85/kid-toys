@@ -5,6 +5,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import { Button, Label, Modal } from 'flowbite-react';
 import './MyToys.css'
 import Swal from 'sweetalert2';
+import useTitle from '../DynamicTitle/DynamicTitle';
 
 function MyToys() {
     const { user } = useContext(AuthContext);
@@ -12,6 +13,7 @@ function MyToys() {
     const [shows, setShows] = useState(false);
     const [id, setId] = useState();
     const [sort, setSort] = useState('ascending');
+    useTitle("My Toys")
 
     useEffect(() => {
         if (user?.email) {

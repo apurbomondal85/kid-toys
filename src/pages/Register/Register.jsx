@@ -4,6 +4,7 @@ import React, { useContext, useState } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../Provider/AuthProvider'
+import useTitle from '../DynamicTitle/DynamicTitle'
 
 function Register() {
     const { register, updateUser, google } = useContext(AuthContext)
@@ -11,6 +12,7 @@ function Register() {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location?.state?.from?.pathname || '/';
+    useTitle("Sing Up")
 
     const handleRegister = e => {
         e.preventDefault();

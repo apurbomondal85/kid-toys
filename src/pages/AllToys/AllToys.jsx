@@ -5,6 +5,7 @@ import {useLoaderData, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from '../../Provider/AuthProvider'
+import useTitle from '../DynamicTitle/DynamicTitle';
 
 function AllToys() {
   const {user} = useContext(AuthContext)
@@ -12,6 +13,7 @@ function AllToys() {
   const search = useRef('')
   const [products, setProducts] = useState(loadProducts)
   const navigate = useNavigate();
+  useTitle("All Toys")
 
   const handleSearchBtn = () => {
     const searchValue = search.current.value;

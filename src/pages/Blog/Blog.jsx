@@ -1,8 +1,11 @@
 
 import { Accordion } from 'flowbite-react'
 import React from 'react'
+import useTitle from '../DynamicTitle/DynamicTitle'
 
 function Blog() {
+    useTitle("Blog")
+
     return (
         <div className='w-full md:w-[80%] lg:w-[70%] mx-auto py-16'>
             <Accordion>

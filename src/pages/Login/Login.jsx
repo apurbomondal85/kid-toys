@@ -4,6 +4,7 @@ import { useContext, useState } from 'react';
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import useTitle from '../DynamicTitle/DynamicTitle';
 
 function Login() {
     const { login, google } = useContext(AuthContext)
@@ -11,6 +12,7 @@ function Login() {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location?.state?.from?.pathname || '/';
+    useTitle("Login")
 
     const handleLogin = e => {
         e.preventDefault();

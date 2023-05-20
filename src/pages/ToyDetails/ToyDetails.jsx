@@ -3,10 +3,14 @@ import React from 'react'
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
 import { useLoaderData } from 'react-router-dom'
+import useTitle from '../DynamicTitle/DynamicTitle';
 
 function ToyDetails() {
     const loaderToy = useLoaderData();
     const { _id, name, email, picture, price, seller, rating, category,quantity, description } = loaderToy;
+    useTitle(`Toy Details - ${name}`)
+
+
     return (
         <div className='py-16'>
             <h2 className='text-center font-bold text-xl text-purple-700'>Single Toy Details</h2>

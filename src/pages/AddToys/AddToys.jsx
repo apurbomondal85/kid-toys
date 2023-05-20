@@ -3,10 +3,11 @@ import { useContext } from 'react'
 import { AuthContext } from '../../Provider/AuthProvider'
 import { Button } from 'flowbite-react'
 import Swal from 'sweetalert2'
+import useTitle from '../DynamicTitle/DynamicTitle'
 
 function AddToys() {
     const { user } = useContext(AuthContext)
-
+    useTitle("Add Toy");
     const handleAddToy = e => {
         e.preventDefault();
         const form = e.target;
