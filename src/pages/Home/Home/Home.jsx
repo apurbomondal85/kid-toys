@@ -5,6 +5,7 @@ import Gallery from '../Gallery/Gallery'
 import Products from '../Products/Products'
 import Offers from '../Offers/Offers'
 import FAQSection from '../FAQ/FAQSection'
+import Reviews from '../Reviews/Reviews'
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
       <Products></Products>
       <Offers></Offers>
       <FAQSection></FAQSection>
+      <Reviews></Reviews>
     </div>
   )
 }
