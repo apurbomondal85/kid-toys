@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import NavBar from '../pages/Sheared/Navbar/NavBar'
 import { ToastContainer } from 'react-toastify'
@@ -12,6 +12,9 @@ function Main() {
   window.onload = () => {
     setIsLoading(false);
   }
+  useEffect(() => {
+    setIsLoading(false)
+  },[isLoading])
 
   return (
     <>

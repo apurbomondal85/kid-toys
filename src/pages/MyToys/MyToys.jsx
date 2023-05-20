@@ -83,6 +83,8 @@ function MyToys() {
                                 'Your file has been deleted.',
                                 'success'
                             )
+                            const remaining = toys.filter(toy => toy._id !== _id);
+                            setToys(remaining)
                         }
                     })
             }
