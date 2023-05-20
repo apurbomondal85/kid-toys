@@ -17,7 +17,7 @@ function Products() {
         setSelectedTab(index);
 
         if (selectedTabValue !== "All") {
-            fetch(`https://toys-server-omega.vercel.app/toys/category/${selectedTabValue}`)
+            fetch(`http://localhost:5000/toys/category/${selectedTabValue}`)
                 .then(res => res.json())
                 .then(data => {
                     setProducts(data);
@@ -28,7 +28,7 @@ function Products() {
     // get all toys
     useEffect(() => {
         if (selectedTab == 0) {
-            fetch('https://toys-server-omega.vercel.app/toys')
+            fetch('http://localhost:5000/toys')
                 .then(res => res.json())
                 .then(data => {
                     setProducts(data)

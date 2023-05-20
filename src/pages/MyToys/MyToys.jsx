@@ -18,7 +18,7 @@ function MyToys() {
     // get toy using email
     useEffect(() => {
         if (user?.email) {
-            fetch(`https://toys-server-omega.vercel.app/username?email=${user.email}`)
+            fetch(`http://localhost:5000/username?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setToys(data);
@@ -41,7 +41,7 @@ function MyToys() {
 
         const updateValue = { price, quantity, description };
 
-        fetch(`https://toys-server-omega.vercel.app/toys/${id}`, {
+        fetch(`http://localhost:5000/toys/${id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"
@@ -56,6 +56,14 @@ function MyToys() {
                         'Success updated value',
                         'success'
                     )
+                    const remaining = toys.filter(toy => toy._id !== id);
+                    const update = toys.find(toy => toy._id === id);
+                    update.price = price;
+                    update.quantity = quantity;
+                    update.description = description;
+                    setToys([update, ...remaining])
+                    form.reset();
+                    setShows(false)
                 }
             })
     }
@@ -72,7 +80,7 @@ function MyToys() {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://toys-server-omega.vercel.app/toys/${_id}`, {
+                fetch(`http://localhost:5000/toys/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -93,7 +101,7 @@ function MyToys() {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`https://toys-server-omega.vercel.app/sortPrice?sortOrder=${sort}&email=${user.email}`)
+            fetch(`http://localhost:5000/sortPrice?sortOrder=${sort}&email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setToys(data);
