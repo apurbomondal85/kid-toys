@@ -9,6 +9,7 @@ import AddToys from "../pages/AddToys/AddToys";
 import ToyDetails from "../pages/ToyDetails/ToyDetails";
 import MyToys from "../pages/MyToys/MyToys";
 import Error from "../pages/Error/Error";
+import Blog from "../pages/Blog/Blog";
 
 export const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
                 path: '/toy-details/:id',
                 element: <PrivateRoutes><ToyDetails></ToyDetails></PrivateRoutes>,
                 loader: ({params}) => fetch(`https://toys-server-omega.vercel.app/toys/${params.id}`)
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             },
             {
                 path: '/login',
