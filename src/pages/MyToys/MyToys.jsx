@@ -5,13 +5,13 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import { Button, Label, Modal } from 'flowbite-react';
 import './MyToys.css'
 import Swal from 'sweetalert2';
-import { data } from 'autoprefixer';
 
 function MyToys() {
     const { user } = useContext(AuthContext);
     const [toys, setToys] = useState([])
     const [shows, setShows] = useState(false);
     const [id, setId] = useState();
+    const [sort, setSort] = useState('ascending');
 
     useEffect(() => {
         if (user?.email) {
@@ -84,12 +84,26 @@ function MyToys() {
         })
     }
 
+    useEffect(() => {
+        if (user?.email) {
+            fetch(`http://localhost:5000/sortPrice?sortOrder=${sort}&email=${user.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    setToys(data);
+                })
+        }
+    }, [sort])
+
 
 
     return (
         <div className='py-16'>
             <h1 className="text-center text-4xl font-bold text-slate-700 mt-4">My All Toys</h1>
             <div className="w-20 h-1 mx-auto mt-2 bg-purple-700"></div>
+            <div className="flex items-center justify-center gap-4 mt-4 lg:mt-8">
+                <Button gradientMonochrome="purple" onClick={() => setSort("descending")}>Descending</Button>
+                <Button gradientMonochrome="teal" onClick={() => setSort("ascending")}>Ascending </Button>
+            </div>
             <div className="mt-12">
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table className="w-full text-sm text-left text-gray-500">
