@@ -2,6 +2,7 @@
 import { useContext } from 'react'
 import { AuthContext } from '../../Provider/AuthProvider'
 import { Button } from 'flowbite-react'
+import Swal from 'sweetalert2'
 
 function AddToys() {
     const { user } = useContext(AuthContext)
@@ -21,7 +22,7 @@ function AddToys() {
 
         const toyInfo = { name, picture, seller, email, price, category, rating, quantity, description };
 
-        fetch('http://localhost:5000/toys', {
+        fetch('https://toys-server-omega.vercel.app/toys', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -32,6 +33,11 @@ function AddToys() {
             .then(data => {
                 if (data.acknowledged) {
                     form.reset();
+                    Swal.fire(
+                        'Toy Added',
+                        'Your toy added is successful',
+                        'success'
+                    )
                 }
             })
     }

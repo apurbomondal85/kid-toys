@@ -15,7 +15,7 @@ function MyToys() {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/username?email=${user.email}`)
+            fetch(`https://toys-server-omega.vercel.app/username?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setToys(data);
@@ -37,7 +37,7 @@ function MyToys() {
 
         const updateValue = { price, quantity, description };
 
-        fetch(`http://localhost:5000/toys/${id}`, {
+        fetch(`https://toys-server-omega.vercel.app/toys/${id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"
@@ -46,7 +46,7 @@ function MyToys() {
         })
             .then(res => res.json())
             .then(data => {
-                if (data) {
+                if (data.acknowledged) {
                     Swal.fire(
                         'Success',
                         'Success updated value',
@@ -67,7 +67,7 @@ function MyToys() {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/toys/${_id}`, {
+                fetch(`https://toys-server-omega.vercel.app/toys/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

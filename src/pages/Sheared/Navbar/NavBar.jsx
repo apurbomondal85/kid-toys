@@ -29,7 +29,7 @@ function NavBar() {
                 {
                     user ? <>
                         <Avatar
-                            img={user?.photoURL}
+                            img={user.photoURL}
                             rounded={true}
                             bordered={true}
                             color="purple"
