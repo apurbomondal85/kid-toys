@@ -1,0 +1,7 @@
+
+.react-tabs__tab--selected{
+    background-color: rgb(108 43 217 / 700) !important;
+    color: white;
+    border: none;
+    border-radius: .375rem;
+}
