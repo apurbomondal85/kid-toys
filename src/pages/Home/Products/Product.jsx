@@ -38,7 +38,7 @@ function Product({ product }) {
         <div className=" bg-white border border-gray-200 rounded-lg shadow transition-all ease-in-out duration-500 hover:shadow-lg cursor-pointer">
             <img className="h-[250px] object-fill w-full rounded-t-lg" src={picture} alt="product-image" />
             <div className="p-5">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 whitespace-nowrap">{name}</h5>
+                <h5 className="mb-2 text-2xl font-bold text-gray-900">{name}</h5>
                 <p className="mb-3 text-xl font-semibold text-gray-700">Price : ${price}</p>
                 <div className="flex items-center gap-2 mb-4">
                     <Rating

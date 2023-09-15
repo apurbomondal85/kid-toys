@@ -20,7 +20,7 @@ function AllToys() {
   const handleSearchBtn = () => {
     const searchValue = search.current.value;
     if (searchValue) {
-      fetch(`https://toys-server-omega.vercel.app/searchByName/${searchValue}`)
+      fetch(`https://toys-server-bj56713c8-apurbomondal85.vercel.app/searchByName/${searchValue}`)
         .then(res => res.json())
         .then(data => {
           setProducts(data);
