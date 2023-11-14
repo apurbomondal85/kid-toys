@@ -18,7 +18,7 @@ function MyToys() {
     // get toy using email
     useEffect(() => {
         if (user?.email) {
-            fetch(`https://toys-server-bj56713c8-apurbomondal85.vercel.app/username?email=${user.email}`)
+            fetch(`https://toys-server-7vpmq3lll-apurbomondal85.vercel.app/username?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setToys(data);
@@ -41,7 +41,7 @@ function MyToys() {
 
         const updateValue = { price, quantity, description };
 
-        fetch(`https://toys-server-bj56713c8-apurbomondal85.vercel.app/toys/${id}`, {
+        fetch(`https://toys-server-7vpmq3lll-apurbomondal85.vercel.app/toys/${id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"
@@ -80,7 +80,7 @@ function MyToys() {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://toys-server-bj56713c8-apurbomondal85.vercel.app/toys/${_id}`, {
+                fetch(`https://toys-server-7vpmq3lll-apurbomondal85.vercel.app/toys/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -101,7 +101,7 @@ function MyToys() {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`https://toys-server-bj56713c8-apurbomondal85.vercel.app/sortPrice?sortOrder=${sort}&email=${user.email}`)
+            fetch(`https://toys-server-7vpmq3lll-apurbomondal85.vercel.app/sortPrice?sortOrder=${sort}&email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setToys(data);

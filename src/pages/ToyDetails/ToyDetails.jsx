@@ -1,16 +1,22 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
-import { useLoaderData } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import useTitle from '../DynamicTitle/DynamicTitle';
 
 function ToyDetails() {
-    const loaderToy = useLoaderData();
-    const { _id, name, email, picture, price, seller, rating, category,quantity, description } = loaderToy;
+    const params = useParams();
+    const [toy, setToy] = useState({});
+    const { _id, name, email, picture, price, seller, rating, category, quantity, description } = toy;
     // dynamic title
     useTitle(`Toy Details - ${name}`)
 
+    useEffect(() => {
+        fetch(`https://toys-server-7vpmq3lll-apurbomondal85.vercel.app/toys/${params.id}`)
+        .then(res => res.json())
+        .then(data => setToy(data))
+    }, [])
 
     return (
         <div className='py-16'>

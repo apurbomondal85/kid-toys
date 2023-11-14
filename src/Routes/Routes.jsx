@@ -19,8 +19,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>,
-                loader: () => fetch('https://toys-server-bj56713c8-apurbomondal85.vercel.app/totalProducts')
+                element: <Home></Home>
             },
             {
                 path: '/my-toys',
@@ -28,8 +27,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/all-toys',
-                element: <AllToys></AllToys>,
-                loader: () => fetch(`https://toys-server-bj56713c8-apurbomondal85.vercel.app/limitToys?limit=20`)
+                element: <AllToys></AllToys>
             },
             {
                 path: '/add-toy',
@@ -38,7 +36,6 @@ export const router = createBrowserRouter([
             {
                 path: '/toy-details/:id',
                 element: <PrivateRoutes><ToyDetails></ToyDetails></PrivateRoutes>,
-                loader: ({params}) => fetch(`https://toys-server-bj56713c8-apurbomondal85.vercel.app/toys/${params.id}`)
             },
             {
                 path: '/blog',

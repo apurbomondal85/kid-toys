@@ -26,7 +26,7 @@ function AddToys() {
 
         const toyInfo = { name, picture, seller, email, price, category, rating, quantity, description };
 
-        fetch('https://toys-server-bj56713c8-apurbomondal85.vercel.app/toys', {
+        fetch('https://toys-server-7vpmq3lll-apurbomondal85.vercel.app/toys', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

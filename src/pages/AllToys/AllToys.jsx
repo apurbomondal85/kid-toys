@@ -1,26 +1,32 @@
 
 import { Button, Table } from 'flowbite-react'
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import {useLoaderData, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from '../../Provider/AuthProvider'
 import useTitle from '../DynamicTitle/DynamicTitle';
 
 function AllToys() {
-  const {user} = useContext(AuthContext)
-  const loadProducts = useLoaderData()
+  const { user } = useContext(AuthContext)
   const search = useRef('')
-  const [products, setProducts] = useState(loadProducts)
+  const [products, setProducts] = useState()
   const navigate = useNavigate();
   // dynamic title
   useTitle("All Toys")
+
+  useEffect(() => {
+    fetch(`https://toys-server-7vpmq3lll-apurbomondal85.vercel.app/limitToys?limit=20`)
+    .then(res => res.json())
+    .then(data => setProducts(data))
+  }, [])
+
 
   // handle the search value and get toys
   const handleSearchBtn = () => {
     const searchValue = search.current.value;
     if (searchValue) {
-      fetch(`https://toys-server-bj56713c8-apurbomondal85.vercel.app/searchByName/${searchValue}`)
+      fetch(`https://toys-server-7vpmq3lll-apurbomondal85.vercel.app/searchByName/${searchValue}`)
         .then(res => res.json())
         .then(data => {
           setProducts(data);
@@ -102,7 +108,7 @@ function AllToys() {
                     {product?.quantity}
                   </td>
                   <td className="px-6 py-4">
-                    <Button onClick={() =>handleDetailsBtn(product?._id)} gradientMonochrome='purple'>View Details</Button>
+                    <Button onClick={() => handleDetailsBtn(product?._id)} gradientMonochrome='purple'>View Details</Button>
                   </td>
                 </tr>)
               }

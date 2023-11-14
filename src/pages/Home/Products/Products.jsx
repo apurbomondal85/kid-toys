@@ -5,21 +5,27 @@ import './Products.css'
 import { useEffect, useState } from 'react';
 import Product from './Product';
 import { Button, Spinner } from 'flowbite-react';
-import { useLoaderData } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 function Products() {
     const [products, setProducts] = useState([])
     const [selectedTab, setSelectedTab] = useState(0);
-    // const [open, setOpen] = useState(false);
-    const { totalProducts } = useLoaderData(0);
+    const [totalPage, setTotalPage] = useState(0);
+    const [perItem, setPerItem] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
     const [loader, setLoader] = useState(true);
 
-    const perItem = 6;
-    const totalPage = Math.ceil(totalProducts / perItem);
-    const totalItem = [...Array(totalPage).keys()];
+    useEffect(() => {
+        fetch('https://toys-server-7vpmq3lll-apurbomondal85.vercel.app/totalProducts')
+            .then(res => res.json())
+            .then(data => {
+                const perItem = 6;
+                const totalPage = Math.ceil(data.totalProducts / perItem);
+                setTotalPage(totalPage)
+                setPerItem(perItem)
+            })
+    }, [])
 
     // handle tab select value and get toys
     const handleTabSelect = (index) => {
@@ -27,7 +33,7 @@ function Products() {
         setSelectedTab(index);
 
         if (selectedTabValue !== "All") {
-            fetch(`https://toys-server-bj56713c8-apurbomondal85.vercel.app/category/${selectedTabValue}`)
+            fetch(`https://toys-server-7vpmq3lll-apurbomondal85.vercel.app/category/${selectedTabValue}`)
                 .then(res => res.json())
                 .then(data => {
                     setProducts(data);
@@ -36,11 +42,12 @@ function Products() {
         }
     }
 
+
     // get all toys
     useEffect(() => {
         setLoader(true)
         if (selectedTab == 0) {
-            fetch(`https://toys-server-bj56713c8-apurbomondal85.vercel.app/AllToys?page=${currentPage}&limit=${perItem}`, {
+            fetch(`https://toys-server-7vpmq3lll-apurbomondal85.vercel.app/AllToys?page=${currentPage}&limit=${perItem}`, {
                 method: "GET",
                 headers: {
                     "content-type": "application/json"
@@ -81,7 +88,6 @@ function Products() {
                             loader
                                 ?
                                 <div className='h-[927px] w-full flex justify-center items-center'>
-                                    {/* <p className='text-purple-700'>Loading...</p> */}
                                     <Spinner
                                         size="xl"
                                     />
@@ -96,13 +102,7 @@ function Products() {
                     </TabPanel>
                 ))}
             </Tabs>
-            {/* {
-                products.length >= 6 && <div className="flex justify-center mt-8"><Button gradientMonochrome="purple" onClick={() => setOpen(true)} className={`py-1 px-4 ${open ? 'hidden' : 'block'}`}>See all</Button></div>
-            } */}
             <div className="flex justify-center items-center mt-12">
-                {/* {
-                    totalItem.map(number => <Button gradientMonochrome={currentPage === number ? "teal" : "purple"} onClick={() => setCurrentPage(number)} className="rounded-none" key={number}>{number + 1}</Button>)
-                } */}
                 <ReactPaginate
                     onPageChange={(e) => setCurrentPage(e.selected)}
                     breakLabel={'...'}
